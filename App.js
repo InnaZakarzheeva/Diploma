@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import RouterComponent from './src/screens/Router';
 
 const App = () => {
-  return <Text>Diploma paper!</Text>;
+  return <RouterComponent />;
 };
 
 export default App;
