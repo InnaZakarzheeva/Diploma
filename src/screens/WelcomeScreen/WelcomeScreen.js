@@ -1,5 +1,5 @@
 import React from 'react';
-import {Wrapper, CustomMessageOuter, CustomMessageInner} from './styles';
+import CustomMessageInner, {Wrapper, CustomMessageOuter} from './styles';
 import Button from '../../components/Button';
 
 export default class WelcomeScreen extends React.Component {
@@ -8,7 +8,7 @@ export default class WelcomeScreen extends React.Component {
       <Wrapper>
         <CustomMessageOuter />
         <CustomMessageInner />
-        <Button title="START CHATTING" />
+        <Button title="CREATE PROFILE" />
       </Wrapper>
     );
   }

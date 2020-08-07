@@ -4,19 +4,29 @@ import colors from '../config/constants';
 
 const Button = ({title}) => {
   return (
-    <ButtonWrapper>
-      <ButtonTitle>{title}</ButtonTitle>
-    </ButtonWrapper>
+    <ButtonShadow>
+      <ButtonWrapper>
+        <ButtonTitle>{title}</ButtonTitle>
+      </ButtonWrapper>
+    </ButtonShadow>
   );
 };
 
-const ButtonWrapper = styled.TouchableOpacity`
+const ButtonShadow = styled.TouchableOpacity`
   position: absolute;
   bottom: 70px;
   width: 300px;
   height: 50px;
-  box-shadow: 3px 3px 10px ${colors.darkShadow};
   box-shadow: -3px -3px 10px ${colors.lightShadow};
+  background: ${colors.primary};
+  border-radius: 20px;
+  justify-content: center;
+`;
+
+const ButtonWrapper = styled.TouchableOpacity`
+  width: 300px;
+  height: 50px;
+  box-shadow: 3px 3px 10px ${colors.darkShadow};
   background: ${colors.primary};
   border-radius: 20px;
   justify-content: center;
