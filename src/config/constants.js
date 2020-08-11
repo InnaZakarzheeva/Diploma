@@ -1,6 +1,7 @@
 const colors = {
   primary: '#303135',
   white: '#ffffff',
+  yellow: '#FFCC00',
 
   darkShadow: 'rgba(31, 36, 39, 0.8)',
   lightShadow: 'rgba(72, 78, 83, 0.6)',

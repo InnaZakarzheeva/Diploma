@@ -1,6 +1,9 @@
 import React from 'react';
-import CustomMessageInner, {Wrapper, CustomMessageOuter} from './styles';
+import CustomMessageInner, {CustomMessageOuter} from './styles';
+import {Wrapper} from '../../config/styles';
 import Button from '../../components/Button';
+import {Actions} from 'react-native-router-flux';
+import {StyleSheet} from 'react-native';
 
 export default class WelcomeScreen extends React.Component {
   render() {
@@ -8,8 +11,19 @@ export default class WelcomeScreen extends React.Component {
       <Wrapper>
         <CustomMessageOuter />
         <CustomMessageInner />
-        <Button title="CREATE PROFILE" />
+        <Button
+          title="CREATE PROFILE"
+          onPress={() => Actions.share()}
+          style={styles.buttonPosition}
+        />
       </Wrapper>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  buttonPosition: {
+    position: 'absolute',
+    bottom: 70,
+  },
+});

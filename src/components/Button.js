@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../config/constants';
+import {TouchableOpacity} from 'react-native';
 
-const Button = ({title}) => {
+const Button = ({title, onPress, style}) => {
   return (
-    <ButtonShadow>
+    <ButtonShadow onPress={() => onPress()} style={{...style}}>
       <ButtonWrapper>
         <ButtonTitle>{title}</ButtonTitle>
       </ButtonWrapper>
@@ -12,9 +13,7 @@ const Button = ({title}) => {
   );
 };
 
-const ButtonShadow = styled.TouchableOpacity`
-  position: absolute;
-  bottom: 70px;
+const ButtonShadow = styled(TouchableOpacity)`
   width: 300px;
   height: 50px;
   box-shadow: -3px -3px 10px ${colors.lightShadow};
@@ -23,7 +22,7 @@ const ButtonShadow = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-const ButtonWrapper = styled.TouchableOpacity`
+const ButtonWrapper = styled.View`
   width: 300px;
   height: 50px;
   box-shadow: 3px 3px 10px ${colors.darkShadow};
