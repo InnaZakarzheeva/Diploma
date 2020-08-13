@@ -14,7 +14,7 @@ export default class WelcomeScreen extends React.Component {
         <Button
           title="CREATE PROFILE"
           onPress={() => Actions.share()}
-          style={styles.buttonPosition}
+          position={styles.buttonPosition}
         />
       </Wrapper>
     );

@@ -16,18 +16,18 @@ export default class ShareScreen extends React.Component {
         </Alert>
         <Button
           title="SHARE TO SOCIAL MEDIA"
-          style={{position: 'absolute', bottom: 230}}
+          position={{position: 'absolute', bottom: 230}}
           onPress={() => {}}
         />
         <Button
           title="QR - CODE"
-          style={{position: 'absolute', bottom: 150}}
+          position={{position: 'absolute', bottom: 150}}
           onPress={() => Actions.qr()}
         />
         <Button
           title="START CHATTING"
-          style={{position: 'absolute', bottom: 70}}
-          onPress={() => {}}
+          position={{position: 'absolute', bottom: 70}}
+          onPress={() => Actions.listOfConversations()}
         />
       </Wrapper>
     );

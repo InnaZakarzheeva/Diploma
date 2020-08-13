@@ -3,6 +3,7 @@ import React from 'react';
 import {Wrapper, AlertTitle} from '../../config/styles';
 import Alert from '../../components/Alert';
 import Button from '../../components/Button';
+import {Actions} from 'react-native-router-flux';
 
 export default class QRScreen extends React.Component {
   render() {
@@ -13,8 +14,8 @@ export default class QRScreen extends React.Component {
         </Alert>
         <Button
           title="START CHATTING"
-          onPress={() => {}}
-          style={{position: 'absolute', bottom: 70}}
+          onPress={() => Actions.listOfConversations()}
+          position={{position: 'absolute', bottom: 70}}
         />
       </Wrapper>
     );
