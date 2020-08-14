@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import {Text} from 'react-native';
+import {Text, StyleSheet, Dimensions} from 'react-native';
 import colors from '../../config/constants';
 
 export const Title = styled(Text)({
-  width: 300,
+  width: 200,
   height: 21,
   fontStyle: 'normal',
   fontWeight: 'bold',
@@ -14,7 +14,7 @@ export const Title = styled(Text)({
 });
 
 export const Subtitle = styled(Text)({
-  width: 300,
+  width: 200,
   height: 15,
   fontStyle: 'normal',
   fontWeight: 'bold',
@@ -23,3 +23,15 @@ export const Subtitle = styled(Text)({
   textAlign: 'center',
   color: colors.yellow,
 });
+
+export const styles = StyleSheet.create({
+  warning: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  shareIcon: {
+    position: 'absolute',
+    top: Dimensions.get('screen').height / 3.5,
+  },
+})

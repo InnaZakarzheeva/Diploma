@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
   theme: {
     width: 50,
     borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   itemWrapper: {
     backgroundColor: colors.primary,
@@ -40,6 +42,8 @@ export const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

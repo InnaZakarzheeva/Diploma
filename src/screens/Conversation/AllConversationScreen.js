@@ -5,6 +5,9 @@ import {styles, Header} from './styles';
 import {Text, FlatList} from 'react-native';
 import ConversationItem from './components/ConversationItem';
 import {Actions} from 'react-native-router-flux';
+import colors from '../../config/constants';
+import Plus from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const chats = [
   {
@@ -32,10 +35,10 @@ export default class AllConversationScreen extends React.Component {
         <Header>
           <Button style={styles.label} title="CHATS" disabled={true} />
           <Button onPress={() => {}} style={styles.theme}>
-            <Text>*icon*</Text>
+            <Icon name="moon-outline" color={colors.white} size={25} />
           </Button>
           <Button onPress={() => {}} style={styles.theme}>
-            <Text>*icon*</Text>
+            <Icon name="exit-outline" color={colors.white} size={25} />
           </Button>
         </Header>
         <FlatList
@@ -48,7 +51,9 @@ export default class AllConversationScreen extends React.Component {
           style={styles.addConversationButton}
           onPress={() => Actions.share()}
           position={{position: 'absolute', bottom: 35, right: 35}}
-        />
+        >
+          <Plus name="plus" color={colors.white} size={40} />
+        </Button>
       </Wrapper>
     );
   }
