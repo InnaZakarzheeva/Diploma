@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 50,
     position: 'absolute',
-    top: Dimensions.get('screen').height / 2.5 - 3,
+    top: Dimensions.get('screen').height / 2.5,
     left: -20,
     borderRadius: 10,
     alignItems: 'center',
@@ -79,6 +79,7 @@ const LightShadowLeft = styled.View`
   border-bottom-left-radius: 0px;
   justify-content: center;
   align-items: center;
+  elevation: 3;
 `;
 
 const DarkShadowLeft = styled.View`
@@ -90,6 +91,7 @@ const DarkShadowLeft = styled.View`
   border-bottom-left-radius: 0px;
   justify-content: center;
   align-items: center;
+  elevation: 3;
 `;
 
 export default CustomMessageInner;

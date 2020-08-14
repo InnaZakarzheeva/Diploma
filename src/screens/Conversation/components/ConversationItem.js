@@ -7,7 +7,7 @@ import Button from '../../../components/Button';
 import {Actions} from 'react-native-router-flux';
 
 const ConversationItem = ({chat}) => (
-  <TouchableOpacity onPress={() => Actions.conversation()}>
+  <TouchableOpacity onPress={() => Actions.conversation()} style={styles.itemWrapper}>
     <InnerBlock>
       <Button
         style={styles.conversationAvatar}

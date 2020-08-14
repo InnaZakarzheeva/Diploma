@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import colors from '../config/constants';
 import {TouchableOpacity} from 'react-native';
 
-const Button = ({title, onPress, position, style, children}) => {
+const Button = ({title, onPress, position, style, disabled, children}) => {
   return (
-    <ButtonShadow onPress={() => onPress()} style={{...position, ...style}}>
+    <ButtonShadow onPress={() => onPress()} style={{...position, ...style}} disabled={disabled}>
       <ButtonWrapper style={{...style}}>
         {title ? <ButtonTitle>{title}</ButtonTitle> : children}
       </ButtonWrapper>
@@ -20,6 +20,7 @@ const ButtonShadow = styled(TouchableOpacity)`
   background: ${colors.primary};
   border-radius: 20px;
   justify-content: center;
+  elevation: 3;
 `;
 
 const ButtonWrapper = styled.View`
@@ -29,6 +30,7 @@ const ButtonWrapper = styled.View`
   background: ${colors.primary};
   border-radius: 20px;
   justify-content: center;
+  elevation: 3;
 `;
 
 const ButtonTitle = styled.Text`

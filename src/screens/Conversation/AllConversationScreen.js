@@ -30,7 +30,7 @@ export default class AllConversationScreen extends React.Component {
     return (
       <Wrapper>
         <Header>
-          <Button style={styles.label} title="CHATS" onPress={() => {}} />
+          <Button style={styles.label} title="CHATS" disabled={true} />
           <Button onPress={() => {}} style={styles.theme}>
             <Text>*icon*</Text>
           </Button>

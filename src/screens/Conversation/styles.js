@@ -11,16 +11,21 @@ export const styles = StyleSheet.create({
     width: 50,
     borderRadius: 10,
   },
+  itemWrapper: {
+    backgroundColor: colors.primary,
+    width: '100%',
+    height: 80,
+  },
   conversationBlock: {
     width: Dimensions.get('screen').width - 50,
     height: 60,
-    marginBottom: 27,
     borderRadius: 15,
   },
   conversationInnerBlock: {
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
+    marginLeft: -1,
   },
   conversationAvatar: {
     width: 40,
