@@ -45,6 +45,11 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  chatHeader: {
+    width: Dimensions.get('screen').width - 30,
+    borderRadius: 10,
+  },
 });
 
 export const Header = styled(View)({
@@ -61,4 +66,11 @@ export const ConversationName = styled(Text)({
   fontStyle: 'normal',
   fontWeight: '400',
   color: colors.white,
+});
+
+export const ChatWrapper = styled(View)({
+  width: '100%',
+  height: Dimensions.get('screen').height - 100,
+  position: 'absolute',
+  bottom: 0,
 });
