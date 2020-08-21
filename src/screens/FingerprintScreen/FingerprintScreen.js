@@ -5,17 +5,22 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../../config/constants';
 import TouchID from 'react-native-touch-id';
 import {IconWrapper} from './styles';
+import {Actions} from 'react-native-router-flux';
 
 const optionalConfigObject = {
-  title: 'Authentication Required', // Android
-  color: '#e00606', // Android,
-  fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+  title: 'Touch ID for "beaver"',
+  color: colors.primary,
+  fallbackLabel: 'Show Passcode',
 };
 
 class FingerprintScreen extends Component {
   pressHandler = () => {
-    TouchID.authenticate('unlock', optionalConfigObject)
+    TouchID.authenticate(
+      'Confirm fingerprint to continue',
+      optionalConfigObject,
+    )
       .then((success) => {
+        Actions.listOfConversations();
         console.log('Authenticated Successfully', success);
       })
       .catch((error) => {
