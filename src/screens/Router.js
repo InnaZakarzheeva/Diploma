@@ -5,11 +5,15 @@ import ShareScreen from './ShareScreen/ShareScreen';
 import QRScreen from './QRCode/QRCodeScreen';
 import AllConversationScreen from './Conversation/AllConversationScreen';
 import ConversationScreen from './Conversation/ConversationScreen';
+import FingerprintScreen from './FingerprintScreen/FingerprintScreen';
+import SplashScreen from './SplashScreen/SplashScreen';
 
 const RouterComponent = () => (
   <Router>
     <Scene key="root" hideNavBar>
+      <Scene key="splash" component={SplashScreen} />
       <Scene key="welcome" component={WelcomeScreen} />
+      <Scene key="fingerprint" component={FingerprintScreen} />
       <Scene key="share" component={ShareScreen} />
       <Scene key="qr" component={QRScreen} />
       <Tabs
