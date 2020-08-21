@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Actions} from 'react-native-router-flux';
 import Button from '../../components/Button';
@@ -6,7 +5,7 @@ import {Wrapper} from '../../config/styles';
 import Alert from '../../components/Alert';
 import {Title, Subtitle, styles} from './styles';
 import Icon from 'react-native-vector-icons/AntDesign';
-import { View } from 'react-native';
+import {View} from 'react-native';
 import colors from '../../config/constants';
 
 export default class ShareScreen extends React.Component {
@@ -20,7 +19,12 @@ export default class ShareScreen extends React.Component {
             <Subtitle>Not secure!</Subtitle>
           </View>
         </Alert>
-        <Icon name="sharealt" color={colors.white} size={120} style={styles.shareIcon} />
+        <Icon
+          name="sharealt"
+          color={colors.white}
+          size={120}
+          style={styles.shareIcon}
+        />
         <Button
           title="SHARE TO SOCIAL MEDIA"
           position={{position: 'absolute', bottom: 230}}

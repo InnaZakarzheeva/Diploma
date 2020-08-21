@@ -5,7 +5,10 @@ import {TouchableOpacity} from 'react-native';
 
 const Button = ({title, onPress, position, style, disabled, children}) => {
   return (
-    <ButtonShadow onPress={() => onPress()} style={{...position, ...style}} disabled={disabled}>
+    <ButtonShadow
+      onPress={() => onPress()}
+      style={{...position, ...style}}
+      disabled={disabled}>
       <ButtonWrapper style={{...style}}>
         {title ? <ButtonTitle>{title}</ButtonTitle> : children}
       </ButtonWrapper>

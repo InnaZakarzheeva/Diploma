@@ -2,7 +2,7 @@ import React from 'react';
 import {Wrapper} from '../../config/styles';
 import Button from '../../components/Button';
 import {styles, Header} from './styles';
-import {Text, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import ConversationItem from './components/ConversationItem';
 import {Actions} from 'react-native-router-flux';
 import colors from '../../config/constants';
@@ -50,8 +50,7 @@ export default class AllConversationScreen extends React.Component {
         <Button
           style={styles.addConversationButton}
           onPress={() => Actions.share()}
-          position={{position: 'absolute', bottom: 35, right: 35}}
-        >
+          position={{position: 'absolute', bottom: 35, right: 35}}>
           <Plus name="plus" color={colors.white} size={40} />
         </Button>
       </Wrapper>

@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Wrapper, AlertTitle} from '../../config/styles';
 import Alert from '../../components/Alert';

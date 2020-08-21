@@ -2,7 +2,7 @@ import React from 'react';
 import {Wrapper} from '../../config/styles';
 import Button from '../../components/Button';
 import {styles, ChatWrapper} from './styles';
-import { GiftedChat } from 'react-native-gifted-chat';
+import {GiftedChat} from 'react-native-gifted-chat';
 import MessageBubble from './components/MessageBubble';
 import InputToolbarComponent from './InputToolbarComponent';
 
@@ -28,7 +28,6 @@ const messages = [
 ];
 
 export default class ConversationScreen extends React.Component {
-
   renderBubble = (props) => <MessageBubble props={props} />;
 
   renderInputToolbar = (props) => <InputToolbarComponent props={props} />;

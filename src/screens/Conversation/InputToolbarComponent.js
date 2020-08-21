@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Image, View, Dimensions} from 'react-native';
+import {StyleSheet, View, Dimensions} from 'react-native';
 import {InputToolbar, Composer, Send} from 'react-native-gifted-chat';
 import colors from '../../config/constants';
 import InsetShadow from 'react-native-inset-shadow';
@@ -48,7 +48,7 @@ const InputToolbarComponent = ({props}) => {
         </ComposerWrapper>
       )}
       renderSend={(sendProps) => (
-        <Send {...sendProps} containerStyle={styles.sendButton} >
+        <Send {...sendProps} containerStyle={styles.sendButton}>
           <Icon name="send-outline" color={colors.white} size={25} />
         </Send>
       )}

@@ -34,4 +34,4 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     top: Dimensions.get('screen').height / 3.5,
   },
-})
+});
