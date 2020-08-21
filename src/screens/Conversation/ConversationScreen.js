@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import {styles, ChatWrapper} from './styles';
 import {GiftedChat, MessageText} from 'react-native-gifted-chat';
 import MessageBubble from './components/MessageBubble';
-import InputToolbarComponent from './InputToolbarComponent';
+import InputToolbarComponent from './components/InputToolbarComponent';
 import OuterBubble from './components/OuterBubble';
 import InnerBubble from './components/InnerBubble';
 

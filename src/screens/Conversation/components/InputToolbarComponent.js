@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import {InputToolbar, Composer, Send} from 'react-native-gifted-chat';
-import colors from '../../config/constants';
+import colors from '../../../config/constants';
 import InsetShadow from 'react-native-inset-shadow';
 import Icon from 'react-native-vector-icons/Ionicons';
 
