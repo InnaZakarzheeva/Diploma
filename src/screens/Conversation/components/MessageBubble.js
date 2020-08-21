@@ -9,26 +9,33 @@ const MessageBubble = ({props}) => (
       left: {
         padding: 5,
         backgroundColor: colors.primary,
-        shadowColor: colors.darkShadow,
-        shadowOffset: {
-          width: 0,
-          height: 0,
-        },
-        shadowOpacity: 10,
-        shadowRadius: 3,
+        // shadowColor: colors.darkShadow,
+        // shadowOffset: {
+        //   width: 0,
+        //   height: 0,
+        // },
+        // shadowOpacity: 10,
+        // shadowRadius: 3,
       },
       right: {
         padding: 5,
         backgroundColor: colors.primary,
-        shadowColor: colors.lightShadow,
-        shadowOffset: {
-          width: 0,
-          height: 0,
-        },
-        shadowOpacity: 10,
-        shadowRadius: 3,
-
-        elevation: 3,
+        // shadowColor: colors.darkShadow,
+        // shadowOffset: {
+        //   width: 0,
+        //   height: 0,
+        // },
+        // shadowOpacity: 10,
+        // shadowRadius: 3,
+        // elevation: 3,
+      },
+    }}
+    textStyle={{
+      left: {
+        color: colors.white,
+      },
+      right: {
+        color: colors.white,
       },
     }}
     onLongPress={() => {}}

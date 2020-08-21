@@ -27,13 +27,12 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width - 50,
     height: 40,
     borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   textInput: {
     width: '95%',
     textAlign: 'left',
     color: colors.white,
+    alignSelf: 'center',
   },
 });
 
