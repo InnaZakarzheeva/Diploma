@@ -7,21 +7,25 @@ import {Title, Subtitle, styles} from './styles';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {View} from 'react-native';
 import colors from '../../config/constants';
+import {connect} from 'react-redux';
 
-export default class ShareScreen extends React.Component {
+class ShareScreen extends React.Component {
   render() {
+    const {theme} = this.props;
     return (
-      <Wrapper>
-        <Alert style={styles.warning}>
-          <Icon name="warning" color={colors.yellow} size={30} />
+      <Wrapper style={{backgroundColor: colors[theme].primary}}>
+        <Alert style={styles.warning} theme={theme}>
+          <Icon name="warning" color={colors[theme].yellow} size={30} />
           <View>
-            <Title>WARNING</Title>
-            <Subtitle>Not secure!</Subtitle>
+            <Title style={{color: colors[theme].yellow}}>WARNING</Title>
+            <Subtitle style={{color: colors[theme].yellow}}>
+              Not secure!
+            </Subtitle>
           </View>
         </Alert>
         <Icon
           name="sharealt"
-          color={colors.white}
+          color={colors[theme].accent}
           size={120}
           style={styles.shareIcon}
         />
@@ -29,18 +33,29 @@ export default class ShareScreen extends React.Component {
           title="SHARE TO SOCIAL MEDIA"
           position={{position: 'absolute', bottom: 230}}
           onPress={() => {}}
+          theme={theme}
         />
         <Button
           title="QR - CODE"
           position={{position: 'absolute', bottom: 150}}
           onPress={() => Actions.qr()}
+          theme={theme}
         />
         <Button
           title="START CHATTING"
           position={{position: 'absolute', bottom: 70}}
           onPress={() => Actions.listOfConversations()}
+          theme={theme}
         />
       </Wrapper>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    theme: state.app.theme,
+  };
+};
+
+export default connect(mapStateToProps, {})(ShareScreen);

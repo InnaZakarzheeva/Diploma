@@ -3,10 +3,20 @@ import styled from 'styled-components';
 import {TouchableOpacity, View} from 'react-native';
 import colors from '../../../config/constants';
 
-const OuterBubble = ({children}) => {
+const OuterBubble = ({theme, children}) => {
   return (
-    <LightShadow>
-      <DarkShadow>{children}</DarkShadow>
+    <LightShadow
+      style={{
+        backgroundColor: colors[theme].primary,
+        shadowColor: colors[theme].lightShadow,
+      }}>
+      <DarkShadow
+        style={{
+          backgroundColor: colors[theme].primary,
+          shadowColor: colors[theme].darkShadow,
+        }}>
+        {children}
+      </DarkShadow>
     </LightShadow>
   );
 };
@@ -14,8 +24,7 @@ const OuterBubble = ({children}) => {
 const LightShadow = styled(TouchableOpacity)`
   max-width: 300px;
   height: auto;
-  box-shadow: -3px -3px 10px ${colors.lightShadow};
-  background: ${colors.primary};
+  box-shadow: -3px -3px 10px;
   border-radius: 15px;
   border-bottom-left-radius: 0px;
   justify-content: center;
@@ -26,8 +35,7 @@ const DarkShadow = styled(View)`
   width: 100%;
   padding: 5px 10px 5px 10px;
   height: auto;
-  box-shadow: 3px 3px 10px ${colors.darkShadow};
-  background: ${colors.primary};
+  box-shadow: 3px 3px 10px;
   border-radius: 15px;
   border-bottom-left-radius: 0px;
   justify-content: center;

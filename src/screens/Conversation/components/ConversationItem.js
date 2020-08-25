@@ -6,17 +6,19 @@ import {View, TouchableOpacity} from 'react-native';
 import Button from '../../../components/Button';
 import {Actions} from 'react-native-router-flux';
 
-const ConversationItem = ({chat}) => (
+const ConversationItem = ({chat, theme}) => (
   <TouchableOpacity
     onPress={() => Actions.conversation({chat})}
-    style={styles.itemWrapper}>
-    <InnerBlock>
+    style={{...styles.itemWrapper, backgroundColor: colors[theme].primary}}>
+    <InnerBlock theme={theme}>
       <Button
         style={styles.conversationAvatar}
         onPress={() => {}}
         title={`${chat.name.length ? chat.name.charAt(0) : chat.id.charAt(0)}`}
+        theme={theme}
+        disabled={true}
       />
-      <ConversationName>
+      <ConversationName style={{color: colors[theme].accent}}>
         {chat.name.length ? chat.name : chat.id}
       </ConversationName>
     </InnerBlock>
@@ -25,7 +27,7 @@ const ConversationItem = ({chat}) => (
 
 export default ConversationItem;
 
-const InnerBlock = ({children}) => (
+const InnerBlock = ({theme, children}) => (
   <View>
     <InsetShadow
       top={false}
@@ -34,7 +36,7 @@ const InnerBlock = ({children}) => (
       shadowOpacity={10}
       elevation={10}
       shadowRadius={10}
-      shadowColor={colors.lightShadow}
+      shadowColor={colors[theme].lightShadow}
       containerStyle={styles.conversationBlock}>
       <InsetShadow
         bottom={false}
@@ -43,7 +45,7 @@ const InnerBlock = ({children}) => (
         shadowOpacity={10}
         elevation={10}
         shadowRadius={10}
-        shadowColor={colors.darkShadow}
+        shadowColor={colors[theme].darkShadow}
         containerStyle={{
           ...styles.conversationBlock,
           ...styles.conversationInnerBlock,

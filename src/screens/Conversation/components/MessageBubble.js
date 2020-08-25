@@ -2,40 +2,25 @@ import React from 'react';
 import {Bubble} from 'react-native-gifted-chat';
 import colors from '../../../config/constants';
 
-const MessageBubble = ({props}) => (
+const MessageBubble = ({theme, ...props}) => (
   <Bubble
     {...props}
     wrapperStyle={{
       left: {
         padding: 5,
-        backgroundColor: colors.primary,
-        // shadowColor: colors.darkShadow,
-        // shadowOffset: {
-        //   width: 0,
-        //   height: 0,
-        // },
-        // shadowOpacity: 10,
-        // shadowRadius: 3,
+        backgroundColor: colors[theme].primary,
       },
       right: {
         padding: 5,
-        backgroundColor: colors.primary,
-        // shadowColor: colors.darkShadow,
-        // shadowOffset: {
-        //   width: 0,
-        //   height: 0,
-        // },
-        // shadowOpacity: 10,
-        // shadowRadius: 3,
-        // elevation: 3,
+        backgroundColor: colors[theme].primary,
       },
     }}
     textStyle={{
       left: {
-        color: colors.white,
+        color: colors[theme].accent,
       },
       right: {
-        color: colors.white,
+        color: colors[theme].accent,
       },
     }}
     onLongPress={() => {}}

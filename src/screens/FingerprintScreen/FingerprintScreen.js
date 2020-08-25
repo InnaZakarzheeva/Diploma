@@ -6,6 +6,7 @@ import colors from '../../config/constants';
 import TouchID from 'react-native-touch-id';
 import {IconWrapper} from './styles';
 import {Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
 
 const optionalConfigObject = {
   title: 'Touch ID for "beaver"',
@@ -29,17 +30,22 @@ class FingerprintScreen extends Component {
   };
 
   render() {
+    const {theme} = this.props;
     return (
-      <Wrapper>
-        <Alert>
-          <AlertTitle>Unlock with fingerprint</AlertTitle>
-          <AlertTitle>(Please, click on icon)</AlertTitle>
+      <Wrapper style={{backgroundColor: colors[theme].primary}}>
+        <Alert theme={theme}>
+          <AlertTitle style={{color: colors[theme].accent}}>
+            Unlock with fingerprint
+          </AlertTitle>
+          <AlertTitle style={{color: colors[theme].accent}}>
+            (Please, click on icon)
+          </AlertTitle>
         </Alert>
         <IconWrapper onPress={() => this.pressHandler()}>
           <Icon
             name="fingerprint" //name="fingerprint-off"
             size={120}
-            color={colors.white}
+            color={colors[theme].white}
           />
         </IconWrapper>
       </Wrapper>
@@ -47,4 +53,10 @@ class FingerprintScreen extends Component {
   }
 }
 
-export default FingerprintScreen;
+const mapStateToProps = (state) => {
+  return {
+    theme: state.app.theme,
+  };
+};
+
+export default connect(mapStateToProps, {})(FingerprintScreen);
