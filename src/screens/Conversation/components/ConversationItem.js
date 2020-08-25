@@ -16,6 +16,7 @@ const ConversationItem = ({chat, theme}) => (
         onPress={() => {}}
         title={`${chat.name.length ? chat.name.charAt(0) : chat.id.charAt(0)}`}
         theme={theme}
+        disabled={true}
       />
       <ConversationName style={{color: colors[theme].accent}}>
         {chat.name.length ? chat.name : chat.id}
