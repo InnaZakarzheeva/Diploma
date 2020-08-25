@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const InputToolbarComponent = ({theme, ...props}) => {
+const InputToolbarComponent = ({theme, giftedProps}) => {
   return (
     <InputToolbar
-      {...props}
+      {...giftedProps}
       containerStyle={{
         ...styles.inputToolbar,
         backgroundColor: colors[theme].primary,

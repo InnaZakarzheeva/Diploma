@@ -39,7 +39,7 @@ class ConversationScreen extends React.Component {
   );
 
   renderInputToolbar = (props) => (
-    <InputToolbarComponent props={props} theme={this.props.theme} />
+    <InputToolbarComponent giftedProps={props} theme={this.props.theme} />
   );
 
   renderMessageText = (props) => {
