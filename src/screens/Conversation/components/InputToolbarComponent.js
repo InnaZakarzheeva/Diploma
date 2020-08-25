@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const styles = StyleSheet.create({
   inputToolbar: {
     height: 60,
-    backgroundColor: colors.primary,
     justifyContent: 'center',
     alignItems: 'flex-end',
   },
@@ -31,31 +30,36 @@ const styles = StyleSheet.create({
   textInput: {
     width: '95%',
     textAlign: 'left',
-    color: colors.white,
     alignSelf: 'center',
   },
 });
 
-const InputToolbarComponent = ({props}) => {
+const InputToolbarComponent = ({theme, ...props}) => {
   return (
     <InputToolbar
       {...props}
-      containerStyle={styles.inputToolbar}
+      containerStyle={{
+        ...styles.inputToolbar,
+        backgroundColor: colors[theme].primary,
+      }}
       renderComposer={(props1) => (
-        <ComposerWrapper>
-          <Composer {...props1} textInputStyle={styles.textInput} />
+        <ComposerWrapper theme={theme}>
+          <Composer
+            {...props1}
+            textInputStyle={{...styles.textInput, color: colors[theme].accent}}
+          />
         </ComposerWrapper>
       )}
       renderSend={(sendProps) => (
         <Send {...sendProps} containerStyle={styles.sendButton}>
-          <Icon name="send-outline" color={colors.white} size={25} />
+          <Icon name="send-outline" color={colors[theme].accent} size={25} />
         </Send>
       )}
     />
   );
 };
 
-const ComposerWrapper = ({children}) => (
+const ComposerWrapper = ({theme, children}) => (
   <View>
     <InsetShadow
       top={false}
@@ -64,7 +68,7 @@ const ComposerWrapper = ({children}) => (
       shadowOpacity={10}
       elevation={10}
       shadowRadius={10}
-      shadowColor={colors.lightShadow}
+      shadowColor={colors[theme].lightShadow}
       containerStyle={styles.lightShadow}>
       <InsetShadow
         bottom={false}
@@ -73,7 +77,7 @@ const ComposerWrapper = ({children}) => (
         shadowOpacity={10}
         elevation={10}
         shadowRadius={10}
-        shadowColor={colors.darkShadow}
+        shadowColor={colors[theme].darkShadow}
         containerStyle={styles.darkShadow}>
         {children}
       </InsetShadow>

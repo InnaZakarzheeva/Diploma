@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import colors from '../../config/constants';
 import {View, StyleSheet, Dimensions, Text} from 'react-native';
 
-const CustomMessageInner = () => (
+const CustomMessageInner = ({theme}) => (
   <View>
     <InsetShadow
       top={false}
@@ -13,7 +13,7 @@ const CustomMessageInner = () => (
       shadowOpacity={10}
       elevation={10}
       shadowRadius={10}
-      shadowColor={colors.lightShadow}
+      shadowColor={colors[theme].lightShadow}
       containerStyle={styles.lightShadow}
     />
     <InsetShadow
@@ -23,18 +23,30 @@ const CustomMessageInner = () => (
       shadowOpacity={10}
       elevation={10}
       shadowRadius={10}
-      shadowColor={colors.darkShadow}
+      shadowColor={colors[theme].darkShadow}
       containerStyle={styles.darkShadow}>
-      <MessageText>Hi! How are you?</MessageText>
+      <MessageText style={{color: colors[theme].accent}}>
+        Hi! How are you?
+      </MessageText>
     </InsetShadow>
   </View>
 );
 
-export const CustomMessageOuter = () => (
+export const CustomMessageOuter = ({theme}) => (
   <View>
-    <LightShadowLeft>
-      <DarkShadowLeft>
-        <MessageText>Ha*ks[%##ask?/</MessageText>
+    <LightShadowLeft
+      style={{
+        backgroundColor: colors[theme].primary,
+        shadowColor: colors[theme].lightShadow,
+      }}>
+      <DarkShadowLeft
+        style={{
+          backgroundColor: colors[theme].primary,
+          shadowColor: colors[theme].darkShadow,
+        }}>
+        <MessageText style={{color: colors[theme].accent}}>
+          Ha*ks[%##ask?/
+        </MessageText>
       </DarkShadowLeft>
     </LightShadowLeft>
   </View>
@@ -42,7 +54,6 @@ export const CustomMessageOuter = () => (
 
 const MessageText = styled(Text)({
   fontSize: 16,
-  color: colors.white,
 });
 
 const styles = StyleSheet.create({
@@ -73,8 +84,7 @@ const LightShadowLeft = styled.View`
   right: -20px;
   width: 200px;
   height: 50px;
-  box-shadow: -3px -3px 10px ${colors.lightShadow};
-  background: ${colors.primary};
+  box-shadow: -3px -3px 10px;
   border-radius: 10px;
   border-bottom-left-radius: 0px;
   justify-content: center;
@@ -85,8 +95,7 @@ const LightShadowLeft = styled.View`
 const DarkShadowLeft = styled.View`
   width: 200px;
   height: 50px;
-  box-shadow: 3px 3px 10px ${colors.darkShadow};
-  background: ${colors.primary};
+  box-shadow: 3px 3px 10px;
   border-radius: 10px;
   border-bottom-left-radius: 0px;
   justify-content: center;

@@ -8,6 +8,8 @@ import {Actions} from 'react-native-router-flux';
 import colors from '../../config/constants';
 import Plus from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {connect} from 'react-redux';
+import {changeAppTheme} from '../../actions/index';
 
 const chats = [
   {
@@ -28,32 +30,54 @@ const chats = [
   },
 ];
 
-export default class AllConversationScreen extends React.Component {
+class AllConversationScreen extends React.Component {
   render() {
+    const {theme} = this.props;
     return (
-      <Wrapper>
+      <Wrapper style={{backgroundColor: colors[theme].primary}}>
         <Header>
-          <Button style={styles.label} title="CHATS" disabled={true} />
-          <Button onPress={() => {}} style={styles.theme}>
-            <Icon name="moon-outline" color={colors.white} size={25} />
+          <Button
+            style={styles.label}
+            title="CHATS"
+            disabled={true}
+            theme={theme}
+          />
+          <Button
+            onPress={() => this.props.changeAppTheme()}
+            style={styles.theme}
+            theme={theme}>
+            <Icon name="moon-outline" color={colors[theme].accent} size={25} />
           </Button>
-          <Button onPress={() => {}} style={styles.theme}>
-            <Icon name="exit-outline" color={colors.white} size={25} />
+          <Button onPress={() => {}} style={styles.theme} theme={theme}>
+            <Icon name="exit-outline" color={colors[theme].accent} size={25} />
           </Button>
         </Header>
         <FlatList
           data={chats}
-          renderItem={({item}) => <ConversationItem chat={item} />}
+          renderItem={({item}) => (
+            <ConversationItem chat={item} theme={theme} />
+          )}
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.conversationsList}
         />
         <Button
           style={styles.addConversationButton}
           onPress={() => Actions.share()}
+          theme={theme}
           position={{position: 'absolute', bottom: 35, right: 35}}>
-          <Plus name="plus" color={colors.white} size={40} />
+          <Plus name="plus" color={colors[theme].accent} size={40} />
         </Button>
       </Wrapper>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    theme: state.app.theme,
+  };
+};
+
+export default connect(mapStateToProps, {changeAppTheme})(
+  AllConversationScreen,
+);

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const InnerBubble = ({children}) => {
+const InnerBubble = ({theme, children}) => {
   return (
     <InsetShadow
       top={false}
@@ -31,7 +31,7 @@ const InnerBubble = ({children}) => {
       shadowOpacity={10}
       elevation={10}
       shadowRadius={10}
-      shadowColor={colors.lightShadow}
+      shadowColor={colors[theme].lightShadow}
       containerStyle={styles.lightShadow}>
       <InsetShadow
         bottom={false}
@@ -40,7 +40,7 @@ const InnerBubble = ({children}) => {
         shadowOpacity={10}
         elevation={10}
         shadowRadius={10}
-        shadowColor={colors.darkShadow}
+        shadowColor={colors[theme].darkShadow}
         containerStyle={styles.darkShadow}>
         {children}
       </InsetShadow>

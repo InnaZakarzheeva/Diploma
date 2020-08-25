@@ -3,14 +3,38 @@ import styled from 'styled-components';
 import colors from '../config/constants';
 import {TouchableOpacity} from 'react-native';
 
-const Button = ({title, onPress, position, style, disabled, children}) => {
+const Button = ({
+  title,
+  onPress,
+  position,
+  style,
+  disabled,
+  theme,
+  children,
+}) => {
   return (
     <ButtonShadow
       onPress={() => onPress()}
-      style={{...position, ...style}}
+      style={{
+        ...position,
+        ...style,
+        backgroundColor: colors[theme].primary,
+        shadowColor: colors[theme].lightShadow,
+      }}
       disabled={disabled}>
-      <ButtonWrapper style={{...style}}>
-        {title ? <ButtonTitle>{title}</ButtonTitle> : children}
+      <ButtonWrapper
+        style={{
+          ...style,
+          backgroundColor: colors[theme].primary,
+          shadowColor: colors[theme].darkShadow,
+        }}>
+        {title ? (
+          <ButtonTitle style={{color: colors[theme].accent}}>
+            {title}
+          </ButtonTitle>
+        ) : (
+          children
+        )}
       </ButtonWrapper>
     </ButtonShadow>
   );
@@ -19,8 +43,7 @@ const Button = ({title, onPress, position, style, disabled, children}) => {
 const ButtonShadow = styled(TouchableOpacity)`
   width: 300px;
   height: 50px;
-  box-shadow: -3px -3px 10px ${colors.lightShadow};
-  background: ${colors.primary};
+  box-shadow: -3px -3px 10px;
   border-radius: 20px;
   justify-content: center;
   elevation: 3;
@@ -29,8 +52,7 @@ const ButtonShadow = styled(TouchableOpacity)`
 const ButtonWrapper = styled.View`
   width: 100%;
   height: 50px;
-  box-shadow: 3px 3px 10px ${colors.darkShadow};
-  background: ${colors.primary};
+  box-shadow: 3px 3px 10px;
   border-radius: 20px;
   justify-content: center;
   elevation: 3;
@@ -42,7 +64,6 @@ const ButtonTitle = styled.Text`
   font-size: 18px;
   line-height: 21px;
   text-align: center;
-  color: ${colors.white};
 `;
 
 export default Button;

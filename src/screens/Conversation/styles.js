@@ -1,6 +1,5 @@
 import {StyleSheet, View, Dimensions, Text} from 'react-native';
 import styled from 'styled-components';
-import colors from '../../config/constants';
 
 export const styles = StyleSheet.create({
   label: {
@@ -14,7 +13,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemWrapper: {
-    backgroundColor: colors.primary,
     width: '100%',
     height: 80,
   },
@@ -65,7 +63,6 @@ export const ConversationName = styled(Text)({
   fontSize: 16,
   fontStyle: 'normal',
   fontWeight: '400',
-  color: colors.white,
 });
 
 export const ChatWrapper = styled(View)({
