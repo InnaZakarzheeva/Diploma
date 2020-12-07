@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Scene, Tabs} from 'react-native-router-flux';
+import {Router, Scene} from 'react-native-router-flux';
 import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
 import ShareScreen from './ShareScreen/ShareScreen';
 import QRScreen from './QRCode/QRCodeScreen';
@@ -16,18 +16,8 @@ const RouterComponent = () => (
       <Scene key="fingerprint" component={FingerprintScreen} />
       <Scene key="share" component={ShareScreen} />
       <Scene key="qr" component={QRScreen} />
-      <Tabs
-        key="conversation_tabs"
-        swipeEnabled
-        tabBarPosition="top"
-        hideTabBar>
-        <Scene
-          key="listOfConversations"
-          component={AllConversationScreen}
-          hideNavBar
-        />
-        <Scene key="conversation" component={ConversationScreen} hideNavBar />
-      </Tabs>
+      <Scene key="listOfConversations" component={AllConversationScreen} />
+      <Scene key="conversation" component={ConversationScreen} />
     </Scene>
   </Router>
 );

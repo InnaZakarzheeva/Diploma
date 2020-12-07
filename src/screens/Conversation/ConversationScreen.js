@@ -7,8 +7,10 @@ import MessageBubble from './components/MessageBubble';
 import InputToolbarComponent from './components/InputToolbarComponent';
 import OuterBubble from './components/OuterBubble';
 import InnerBubble from './components/InnerBubble';
+import {connect} from 'react-redux';
+import colors from '../../config/constants';
 
-export default class ConversationScreen extends React.Component {
+class ConversationScreen extends React.Component {
   state = {
     messages: [
       {
@@ -32,11 +34,14 @@ export default class ConversationScreen extends React.Component {
     ],
   };
 
-  renderBubble = (props) => <MessageBubble props={props} />;
+  renderBubble = (props) => <MessageBubble {...props} />;
 
-  renderInputToolbar = (props) => <InputToolbarComponent props={props} />;
+  renderInputToolbar = (props) => (
+    <InputToolbarComponent giftedProps={props} theme={this.props.theme} />
+  );
 
   renderMessageText = (props) => {
+    const {theme} = this.props;
     const {currentMessage} = props;
     const {
       user: {_id},
@@ -44,13 +49,13 @@ export default class ConversationScreen extends React.Component {
     switch (_id) {
       case 1:
         return (
-          <InnerBubble>
+          <InnerBubble theme={theme}>
             <MessageText {...props} />
           </InnerBubble>
         );
       case 2:
         return (
-          <OuterBubble>
+          <OuterBubble theme={theme}>
             <MessageText {...props} />
           </OuterBubble>
         );
@@ -66,15 +71,16 @@ export default class ConversationScreen extends React.Component {
   };
 
   render() {
-    const {nameOfConversation} = this.props;
+    const {nameOfConversation, theme} = this.props;
     const {messages} = this.state;
     return (
-      <Wrapper>
+      <Wrapper style={{backgroundColor: colors[theme].primary}}>
         <Button
           title={nameOfConversation || 'Conversation'}
           position={{position: 'absolute', top: 45}}
           style={styles.chatHeader}
           disabled={true}
+          theme={theme}
         />
         <ChatWrapper>
           <GiftedChat
@@ -102,3 +108,11 @@ export default class ConversationScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    theme: state.app.theme,
+  };
+};
+
+export default connect(mapStateToProps, {})(ConversationScreen);
