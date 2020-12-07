@@ -15,26 +15,14 @@ const Button = ({
   return (
     <ButtonShadow
       onPress={() => onPress()}
+      theme={theme}
       style={{
         ...position,
         ...style,
-        backgroundColor: colors[theme].primary,
-        shadowColor: colors[theme].lightShadow,
       }}
       disabled={disabled}>
-      <ButtonWrapper
-        style={{
-          ...style,
-          backgroundColor: colors[theme].primary,
-          shadowColor: colors[theme].darkShadow,
-        }}>
-        {title ? (
-          <ButtonTitle style={{color: colors[theme].accent}}>
-            {title}
-          </ButtonTitle>
-        ) : (
-          children
-        )}
+      <ButtonWrapper style={{...style}} theme={theme}>
+        {title ? <ButtonTitle theme={theme}>{title}</ButtonTitle> : children}
       </ButtonWrapper>
     </ButtonShadow>
   );
@@ -47,6 +35,8 @@ const ButtonShadow = styled(TouchableOpacity)`
   border-radius: 20px;
   justify-content: center;
   elevation: 3;
+  background-color: ${(props) => colors[props.theme].primary};
+  shadow-color: ${(props) => colors[props.theme].lightShadow};
 `;
 
 const ButtonWrapper = styled.View`
@@ -56,6 +46,8 @@ const ButtonWrapper = styled.View`
   border-radius: 20px;
   justify-content: center;
   elevation: 3;
+  background-color: ${(props) => colors[props.theme].primary};
+  shadow-color: ${(props) => colors[props.theme].darkShadow};
 `;
 
 const ButtonTitle = styled.Text`
@@ -64,6 +56,7 @@ const ButtonTitle = styled.Text`
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  color: ${(props) => colors[props.theme].accent};
 `;
 
 export default Button;

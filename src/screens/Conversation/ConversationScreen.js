@@ -1,7 +1,7 @@
 import React from 'react';
 import {Wrapper} from '../../config/styles';
 import Button from '../../components/Button';
-import {styles, ChatWrapper} from './styles';
+import {styles, ChatWrapper, SecurityScreen} from './styles';
 import {GiftedChat, MessageText} from 'react-native-gifted-chat';
 import MessageBubble from './components/MessageBubble';
 import InputToolbarComponent from './components/InputToolbarComponent';
@@ -9,6 +9,7 @@ import OuterBubble from './components/OuterBubble';
 import InnerBubble from './components/InnerBubble';
 import {connect} from 'react-redux';
 import colors from '../../config/constants';
+import {AppState} from 'react-native';
 
 class ConversationScreen extends React.Component {
   state = {
@@ -32,6 +33,21 @@ class ConversationScreen extends React.Component {
         },
       },
     ],
+    isShowSecurityScreen: false,
+  };
+
+  componentDidMount = () => {
+    AppState.addEventListener('change', this.onChangeAppState);
+  };
+
+  componentWillUnmount = () => {
+    AppState.removeEventListener('change', this.onChangeAppState);
+  };
+
+  onChangeAppState = (nextAppState) => {
+    this.setState({
+      isShowSecurityScreen: ['background', 'inactive'].includes(nextAppState),
+    });
   };
 
   renderBubble = (props) => <MessageBubble {...props} />;
@@ -72,8 +88,10 @@ class ConversationScreen extends React.Component {
 
   render() {
     const {nameOfConversation, theme} = this.props;
-    const {messages} = this.state;
-    return (
+    const {messages, isShowSecurityScreen} = this.state;
+    return isShowSecurityScreen ? (
+      <SecurityScreen theme={theme} />
+    ) : (
       <Wrapper style={{backgroundColor: colors[theme].primary}}>
         <Button
           title={nameOfConversation || 'Conversation'}

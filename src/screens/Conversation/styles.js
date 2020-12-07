@@ -1,5 +1,6 @@
 import {StyleSheet, View, Dimensions, Text} from 'react-native';
 import styled from 'styled-components';
+import colors from '../../config/constants';
 
 export const styles = StyleSheet.create({
   label: {
@@ -70,4 +71,9 @@ export const ChatWrapper = styled(View)({
   height: Dimensions.get('screen').height - 100,
   position: 'absolute',
   bottom: 0,
+});
+
+export const SecurityScreen = styled(View)({
+  flex: 1,
+  backgroundColor: (props) => colors[props.theme].primary,
 });

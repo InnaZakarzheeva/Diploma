@@ -15,6 +15,26 @@ const optionalConfigObject = {
 };
 
 class FingerprintScreen extends Component {
+  state = {
+    isEnabled: true,
+  };
+
+  componentDidMount = () => {
+    TouchID.isSupported()
+      .then((biometryType) => {
+        if (biometryType === 'TouchID') {
+          this.setState({
+            isEnabled: true,
+          });
+        } else {
+          this.setState({
+            isEnabled: false,
+          });
+        }
+      })
+      .catch((error) => this.setState({isEnabled: false}));
+  };
+
   pressHandler = () => {
     TouchID.authenticate(
       'Confirm fingerprint to continue',
@@ -31,6 +51,7 @@ class FingerprintScreen extends Component {
 
   render() {
     const {theme} = this.props;
+    const {isEnabled} = this.state;
     return (
       <Wrapper style={{backgroundColor: colors[theme].primary}}>
         <Alert theme={theme}>
@@ -41,11 +62,11 @@ class FingerprintScreen extends Component {
             (Please, click on icon)
           </AlertTitle>
         </Alert>
-        <IconWrapper onPress={() => this.pressHandler()}>
+        <IconWrapper disabled={!isEnabled} onPress={() => this.pressHandler()}>
           <Icon
-            name="fingerprint" //name="fingerprint-off"
+            name={isEnabled ? 'fingerprint' : 'fingerprint-off'}
             size={120}
-            color={colors[theme].white}
+            color={colors[theme].accent}
           />
         </IconWrapper>
       </Wrapper>
