@@ -34,9 +34,7 @@ class ConversationScreen extends React.Component {
     ],
   };
 
-  renderBubble = (props) => (
-    <MessageBubble props={props} theme={this.props.theme} />
-  );
+  renderBubble = (props) => <MessageBubble {...props} />;
 
   renderInputToolbar = (props) => (
     <InputToolbarComponent giftedProps={props} theme={this.props.theme} />

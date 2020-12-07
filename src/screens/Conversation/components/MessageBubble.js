@@ -1,5 +1,6 @@
 import React from 'react';
 import {Bubble} from 'react-native-gifted-chat';
+import {connect} from 'react-redux';
 import colors from '../../../config/constants';
 
 const MessageBubble = ({theme, ...props}) => (
@@ -27,4 +28,10 @@ const MessageBubble = ({theme, ...props}) => (
   />
 );
 
-export default MessageBubble;
+const mapStateToProps = (state) => {
+  return {
+    theme: state.app.theme,
+  };
+};
+
+export default connect(mapStateToProps, {})(MessageBubble);
