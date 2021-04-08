@@ -15,6 +15,7 @@ const CustomMessageInner = ({theme}) => (
       shadowRadius={10}
       shadowColor={colors[theme].lightShadow}
       containerStyle={styles.lightShadow}
+      children={<View />}
     />
     <InsetShadow
       bottom={false}

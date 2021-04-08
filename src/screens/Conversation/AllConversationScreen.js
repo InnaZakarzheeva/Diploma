@@ -10,6 +10,7 @@ import Plus from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
 import {changeAppTheme} from '../../actions/index';
+import ExitModal from '../../components/ExitModal';
 
 const chats = [
   {
@@ -31,6 +32,10 @@ const chats = [
 ];
 
 class AllConversationScreen extends React.Component {
+  state = {
+    isVisible: false,
+  };
+
   render() {
     const {theme} = this.props;
     return (
@@ -48,7 +53,10 @@ class AllConversationScreen extends React.Component {
             theme={theme}>
             <Icon name="moon-outline" color={colors[theme].accent} size={25} />
           </Button>
-          <Button onPress={() => {}} style={styles.theme} theme={theme}>
+          <Button
+            onPress={() => this.setState({isVisible: true})}
+            style={styles.theme}
+            theme={theme}>
             <Icon name="exit-outline" color={colors[theme].accent} size={25} />
           </Button>
         </Header>
@@ -67,6 +75,17 @@ class AllConversationScreen extends React.Component {
           position={{position: 'absolute', bottom: 35, right: 35}}>
           <Plus name="plus" color={colors[theme].accent} size={40} />
         </Button>
+
+        <ExitModal
+          visible={this.state.isVisible}
+          onCancel={() => this.setState({isVisible: false})}
+          onExit={() => {
+            this.setState({
+              isVisible: false,
+            });
+            Actions.replace('welcome');
+          }}
+        />
       </Wrapper>
     );
   }

@@ -29,7 +29,6 @@ class SplashScreen extends Component {
 
   render() {
     const {theme} = this.props;
-    console.log(theme);
     return (
       <Wrapper
         style={{

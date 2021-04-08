@@ -3,7 +3,7 @@ import InsetShadow from 'react-native-inset-shadow';
 import colors from '../config/constants';
 import {StyleSheet, View} from 'react-native';
 
-const Alert = ({style, theme, children}) => {
+const Alert = ({style, theme, children, wrapperStyle}) => {
   return (
     <View style={styles.wrapper}>
       <InsetShadow
@@ -14,7 +14,8 @@ const Alert = ({style, theme, children}) => {
         elevation={10}
         shadowRadius={10}
         shadowColor={colors[theme].lightShadow}
-        containerStyle={styles.lightShadow}
+        containerStyle={{...styles.lightShadow, ...(wrapperStyle || {})}}
+        children={<View />}
       />
       <InsetShadow
         bottom={false}

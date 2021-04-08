@@ -8,10 +8,18 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import {View} from 'react-native';
 import colors from '../../config/constants';
 import {connect} from 'react-redux';
+import Share from 'react-native-share';
 
 class ShareScreen extends React.Component {
   render() {
     const {theme} = this.props;
+    const shareUserId = () => {
+      Share.open({
+        title: 'Beaver: add new connection',
+        message:
+          'Click by following link to start chatting! https://demolink.com',
+      });
+    };
     return (
       <Wrapper style={{backgroundColor: colors[theme].primary}}>
         <Alert style={styles.warning} theme={theme}>
@@ -32,7 +40,7 @@ class ShareScreen extends React.Component {
         <Button
           title="SHARE TO SOCIAL MEDIA"
           position={{position: 'absolute', bottom: 230}}
-          onPress={() => {}}
+          onPress={shareUserId}
           theme={theme}
         />
         <Button
